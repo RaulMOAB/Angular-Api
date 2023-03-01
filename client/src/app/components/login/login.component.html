@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6 mx-auto">
+            <form
+            *ngIf="!isLoggedIn"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input 
+                  type="text" 
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  [(ngModel)]="form.username"
+                  required
+                  #username="ngModel"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && username.errors
+                  }">
+                  <div
+                  *ngIf="username.errors && f.submitted"
+                  class="invalid-feedback text-red-500"
+                >
+                  Este campo es obligatorio!
+                </div>
+                  <div id="emailHelp"
+                  class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password"
+                  class="form-control"
+                  id="password"
+                  type="password"
+                  name="password"
+                  [(ngModel)]="form.password"
+                  required
+                  minlength="6"
+                  #password="ngModel"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && password.errors
+                  }">
+                  <div
+                  *ngIf="password.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  <div class="text-red-500" *ngIf="password.errors['required']">
+                    La contraseña es obligatoria
+                  </div>
+                  <div class="text-red-500" *ngIf="password.errors['minlength']">
+                    La contraseña debe contener al menos 6 carácteres
+                  </div>
+                </div>
+                </div>
+                <!-- <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                <p>¿No tienes cuenta todavía? <strong><a href="/register">Entra aquí</a></strong></p>
+                <p *ngIf="errorMessage" class="text-red-600">{{errorMessage}}</p>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>

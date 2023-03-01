@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of user_list">
+                    <td>{{user.id}}</td> 
+                    <td>{{user.username}}</td> 
+                    <td>{{user.email}}</td>                    
+                  </tr>                
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
